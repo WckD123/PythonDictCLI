@@ -6,12 +6,21 @@ data = json.load(open("data.json"))
 def translate(w):
     w = w.lower()
     if w in data:
-        return "\n".join(data[w])
+        print("\n".join(data[w]))
     elif len(get_close_matches(w,data.keys()))>0:
-        return "Did you mean: " + " or ".join(get_close_matches(w,data.keys(),cutoff=0.77))
+        new_word = get_close_matches(w,data.keys())[0]
+        print("Did you mean: " + new_word)
+        check = input("Enter y or n: ")
+        check = check.lower()
+        if check == "yes" or check == "y":
+            return "\n".join(data[new_word])
+        else:
+            meaning()
     else:
         return "Word not found. Please recheck!!"
 
-word = input("Please Enter The Word: \n")
+def meaning():
+    word = input("Please Enter The Word: \n")
+    translate(word)
 
-print(translate(word))
+meaning()
