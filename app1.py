@@ -13,11 +13,11 @@ def translate(w):
         check = input("Enter y or n: ")
         check = check.lower()
         if check == "yes" or check == "y":
-            return "\n".join(data[new_word])
+            print("\n".join(data[new_word]))
         else:
             meaning()
     else:
-        return "Word not found. Please recheck!!"
+        print("Word not found. Please recheck!!")
 
 def meaning():
     word = input("Please Enter The Word: \n")
